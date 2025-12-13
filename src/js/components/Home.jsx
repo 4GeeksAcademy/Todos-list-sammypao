@@ -1,25 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import TodoInput from "./TodoInput";
+import TodoList from "./TodoList";   
+import "../../styles/index.css";
 
 const Home = () => {
-	return (
-		
-		<div id="container">
-	<h1>To-Do List <i class="fa fa-plus"></i></h1>
-	<input type="text" placeholder="Add New Todo"/>
+  
+  const [todos, setTodos] = useState([
+    { id: 1, text: "Go To matcha" },
+    { id: 2, text: "Llevar a tobi al veterinario" },
+    { id: 3, text: "Comprar pan" },
+  ]);
 
-	<ul>
-		<li><span><i class="fa fa-trash"></i></span> Go To Maths Class</li>
-		<li><span><i class="fa fa-trash"></i></span> Buy New Clothes</li>
-		<li><span><i class="fa fa-trash"></i></span> Visit George</li>
-	</ul>
-</div>
+ 
+  const addTodo = (text) => {
+    const newTodo = {
+      id: Date.now(),
+      text: text,
+    };
+    setTodos([...todos, newTodo]);
+  };
 
-	);
+  
+  const deleteTodo = (id) => {
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  };
+
+  return (
+    <div id="container">
+      <h1>Todo List</h1>
+     
+      <TodoInput onAdd={addTodo} />
+
+     
+      <TodoList todos={todos} onDelete={deleteTodo} />
+    </div>
+  );
 };
-
-
-
-
-
 
 export default Home;
