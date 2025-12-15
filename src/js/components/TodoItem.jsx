@@ -8,7 +8,7 @@ const TodoItem = ({ todo, onDelete }) => {
       <span onClick={() => onDelete(todo.id)}>
         <i className="fa fa-trash"></i>
       </span>
-      {todo.text}
+      {todo.label}
     </li>
   );
 };
