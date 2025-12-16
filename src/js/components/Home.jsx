@@ -28,13 +28,19 @@ const Home = () => {
 
     setTodos([...todos, createdTodo]);
   }
- 
+
+  async function deleteTodo(id) {
+    await todoListServices.deleteTodoList({ id });
+    fetchToDoList();
+  }
 
 
-  const deleteTodo = (id) => {
-    const newTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodos);
-  };
+
+
+  //const deleteTodo = (id) => {
+    //const newTodos = todos.filter((todo) => todo.id !== id);
+    //setTodos(newTodos);
+  //};
 
   return (
     <div id="container">

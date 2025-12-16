@@ -30,7 +30,7 @@ async function postTodoList(todos) {
 
 async function deleteTodoList(todo) {
 
-    const response = await fetch(`https://playground.4geeks.com/todo/todos/Shammy/${todo.id}`, {
+    const response = await fetch(`https://playground.4geeks.com/todo/todos/${todo.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
